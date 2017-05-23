@@ -36,7 +36,11 @@ class SearchResults(View):
         search_results = {}
         if search_term and location:
             search_results = search(search_term, location, page)
-            businesses = self.process_business_items(search_results['businesses'] or [])
+            if search_results.get('error', False):
+                return JsonResponse({
+                    'error': search_results.get('error', {}).get('description', "Something Went Wrong")
+                }, status=400)
+            businesses = self.process_business_items(search_results.get('businesses', []) or [])
 
         serializer = BusinessSerializer(businesses, many=True)
         return JsonResponse({
