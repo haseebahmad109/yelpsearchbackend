@@ -10,3 +10,6 @@ class Business(models.Model):
     address = models.CharField(max_length=800)
     phone_number = models.CharField(max_length=800)
     url = models.CharField(max_length=800)
+
+    def __str__(self):
+        return self.name

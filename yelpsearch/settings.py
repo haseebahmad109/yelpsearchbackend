@@ -25,7 +25,7 @@ SECRET_KEY = 'nrd#=bv(4m@3n0f64^2hkw-upj&_#q+v!=j++#1j3i@9vxydp_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['yelpsearchbackend.herokuapp.com']
 
 
 # Application definition
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -130,6 +131,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = []
 
+SITE_ID = 1
+
 YELP_SEARCH_LIMIT = 10
 
 CORS_ORIGIN_WHITELIST = (
@@ -137,6 +140,8 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8080',
     'yelpsearch.herokuapp.com',
 )
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # try to import local_settings if file exists
 try:

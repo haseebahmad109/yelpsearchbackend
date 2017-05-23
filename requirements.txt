@@ -3,4 +3,5 @@ requests==2.14.2
 psycopg2==2.7.1
 djangorestframework==3.6.3
 django-cors-headers==2.0.2
-gunicorn
+whitenoise==3.3.0
+gunicorn==19.7.1
